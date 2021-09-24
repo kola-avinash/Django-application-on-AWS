@@ -1,0 +1,81 @@
+{% load static %}
+{% load socialaccount %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" href="{% static '/css/loginstyles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="login">
+           <div class="container">
+                <h1>Log in</h1>
+                <form method = "POST" action="">
+                    {% csrf_token %}
+                <input type="text" placeholder="Username" name="username">
+                <input type="password" placeholder="Password" name ="password"><br>
+                <input type="checkbox"><span>Remember me</span>
+
+                <a href="{% url 'reset_password' %}">Forgot password?</a>
+                <button class="btn login_btn" class="buttonstyles" type="submit" value="Login">Login</button>
+                </form>
+                {% for message in messages %}
+                <p style="color:red" id="messages">{{message}}</p>
+                {% endfor %}	
+                <hr><p>Or Connect With</p><hr>
+                <ul>
+                    <li><a href="{% provider_login_url 'google' %}"><i class="fa fa-google fa-2x"></i></a></li>
+                    <li><i class="fa fa-facebook fa-2x"></i></li>
+                    <li><i class="fa fa-twitter fa-2x"></i></li>
+                    <li><i class="fa fa-github fa-2x"></i></li>
+                    <li><i class="fa fa-linkedin fa-2x"></i></li>
+                </ul>
+                <div class="clearfix"></div>
+           </div>
+        </div>
+        
+    
+        <div class="register">
+            <div class="container">
+                <i class="fa fa-user-plus fa-5x"></i>
+                <h2>Hello,friend!</h2>
+                <p>Enter your personal details and start journey with us</p>
+                <a href="{% url 'register' %}"><button>Register <i class="fa fa-arrow-circle-right"></i></button></a>
+            </div>
+        </div>  
+      </div>
+      <footer class="footer-distributed">
+
+        <div class="footer-right">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-github"></i></a>
+
+        </div>
+
+        <div class="footer-left">
+            <p class="footer-links">
+                <a class="link-1" href="#">Home</a>
+                <a href="#">Blog</a>
+                <a href="#">About</a>
+                <a href="#contact-cont">Contact</a>
+            </p>
+            <p>MeetCheck &copy; 2021</p>
+        </div>
+
+    </footer>
+</body>
+</html>
+
+
+
